@@ -28,27 +28,22 @@ const humidityEl: HTMLParagraphElement = document.getElementById(
   'humidity'
 ) as HTMLParagraphElement;
 
-/*
 
-API Calls
 
-*/
 
 const fetchWeather = async (cityName: string) => {
-  const response = await fetch('/api/weather/', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ cityName }),
-  });
+const response = await fetch('/api/weather/history', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({ cityName }),
+});
+const weatherData = await response.json();
+console.log('weatherData: ', weatherData);
+renderCurrentWeather(weatherData[0]);
+renderForecast(weatherData.slice(1));
 
-  const weatherData = await response.json();
-
-  console.log('weatherData: ', weatherData);
-
-  renderCurrentWeather(weatherData[0]);
-  renderForecast(weatherData.slice(1));
 };
 
 const fetchSearchHistory = async () => {
