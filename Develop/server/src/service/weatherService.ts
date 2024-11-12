@@ -1,9 +1,43 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
-// TODO: Define an interface for the Coordinates object
+// TODO: Define an interface for the Coordinates object//
+interface Coordinates {
+  lat: number;
+  lon: number;
+}
 
-// TODO: Define a class for the Weather object
+// TODO: Define a class for the Weather object//
+class Weather {
+  city: string;
+  date: string;
+  description: string;
+  temp: number;
+  humidity: number;
+  wind: number;
+  uvIndex: number;
+  forecast: Weather[];
+
+  constructor(
+    city: string,
+    date: string,
+    description: string,
+    temp: number,
+    humidity: number,
+    wind: number,
+    uvIndex: number,
+    forecast: Weather[]
+  ) {
+    this.city = city;
+    this.date = date;
+    this.description = description;
+    this.temp = temp;
+    this.humidity = humidity;
+    this.wind = wind;
+    this.uvIndex = uvIndex;
+    this.forecast = forecast;
+  }
+}
 
 // TODO: Complete the WeatherService class
 class WeatherService {
