@@ -151,7 +151,11 @@ const renderSearchHistory = async (searchHistory: any) => {
       searchHistoryContainer.append(historyItem);
     }
   }
-};
+  
+}
+
+
+  
 
 /*
 
