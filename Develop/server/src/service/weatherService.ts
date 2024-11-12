@@ -85,8 +85,8 @@ class WeatherService {
   private parseCurrentWeather(response: any): Weather {
     const { name: city, main: { temp, humidity }, weather, wind: { speed: wind }, dt: date } = response;
     const description = weather[0].description;
-    const uvIndex = 0; // Placeholder, as UV index is not provided in the response
-    const forecast: Weather[] = []; // Placeholder for forecast array
+    const uvIndex = 0; 
+    const forecast: Weather[] = []; 
 
     return new Weather(city, new Date(date * 1000).toISOString(), description, temp, humidity, wind, uvIndex, forecast);
   }
@@ -101,7 +101,8 @@ class WeatherService {
         data.main.temp,
         data.main.humidity,
         data.wind.speed,
-        0, // Placeholder for UV index
+        0, 
+
         []
       );
     });
@@ -117,6 +118,8 @@ class WeatherService {
     const forecast = this.buildForecastArray(currentWeather, weatherData);
     console.log(forecast); // Use the forecast variable
     // Add further processing here
+
+    return currentWeather;
   }
 }
 
