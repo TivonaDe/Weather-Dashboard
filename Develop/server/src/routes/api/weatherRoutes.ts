@@ -29,7 +29,7 @@ router.post('/', (req: Request, res: Response) => {
   }
 });
 // TODO: GET search history
-router.get('/history', async (req: Request, res: Response) => {
+router.get('/history', async (_req: Request, res: Response) => {
   try {
     // get search history
     const history = HistoryService.getCities();

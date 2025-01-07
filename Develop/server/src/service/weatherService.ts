@@ -60,10 +60,6 @@ class WeatherService {
       lon: locationData.lon
     };
   }
-  // TODO: Create buildGeocodeQuery method
-  private buildGeocodeQuery(): string {
-    return `${this.baseURL}geo/1.0/direct?q=${this.cityName}&limit=1&appid=${this.apiKey}`;
-  }
   // TODO: Create buildWeatherQuery method
   private buildWeatherQuery(coordinates: Coordinates): string {
     return `${this.baseURL}weather?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${this.apiKey}`;
