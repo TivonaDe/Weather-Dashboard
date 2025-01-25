@@ -7,25 +7,25 @@ class City {
   id: string;
   name: string;
 
-  constructor(name: string) {
-    this.id = uuidv4();
+  constructor(name: string, id:string) {
+    this.id = id;
     this.name = name;
   }
 }
-// TODO: Complete the HistoryService class
+// Complete the HistoryService class
 class HistoryService {
+  // Define a read method that reads from the searchHistory.json file
   private async read() {
     return await fs.readFile('./db/searchHistory.json', {
       flag: 'a+',
       encoding: 'utf8',
+    });
   }
-  )
-  } 
-  // TODO: Define a read method that reads from the searchHistory.json file
+  // Define a write method that writes the updated cities array to the searchHistory.json file
   private async write(cities: City[]) {
     return await fs.writeFile('./db/searchHistory.json', JSON.stringify(cities, null, '\t'));
   }
-   // Define a getCities method that reads the cities from the searchHistory.json file and returns them as an array of City objects
+  // Define a getCities method that reads the cities from the searchHistory.json file and returns them as an array of City objects
   async getCities() {
     return await this.read().then((cities) => {
       let parsedCities: City[];

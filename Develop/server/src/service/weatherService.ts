@@ -48,7 +48,6 @@ class WeatherService {
   constructor() {
     this.baseURL = process.env.API_BASE_URL || '';
     this.apiKey = process.env.API_KEY || '';
-    this.cityName = '';
   }
 
   private async fetchLocationData(query: string) {
@@ -108,17 +107,15 @@ class WeatherService {
     }
   }
 
-  private parseCurrentWeather(weatherData: any[]): Weather {
-    const currentWeather = weatherData[0];
-    return new Weather(
-      this.cityName!,
-      new Date(currentWeather.dt * 1000).toISOString(),
-      currentWeather.weather[0].description,
-      currentWeather.main.temp,
-      currentWeather.main.humidity,
-      currentWeather.wind.speed,
-      0,
-      []
+  private parseCurrentWeather(response: any): Weather {
+    const city = response.city.name;
+    const date = response.date;
+    const description = response.weather[0].description;
+    const temp = response.main.temp;
+    const humidity = response.main.humidity;
+    const wind = response.wind.speed;
+    const uvIndex = 0;
+    return new Weather(city, date, description, temp, humidity, wind, uvIndex, []
     );
   }
 
