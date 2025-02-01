@@ -1,17 +1,17 @@
 import fs from 'node:fs/promises';
-import {v4 as uuidv4} from 'uuid';
-
+import { v4 as uuidv4 } from 'uuid';
 
 // Define a City class with name and id properties
 class City {
-  id: string;
   name: string;
+  id: string;
 
-  constructor(name: string, id:string) {
-    this.id = id;
+  constructor(name: string, id: string) {
     this.name = name;
+    this.id = id;
   }
 }
+
 // Complete the HistoryService class
 class HistoryService {
   // Define a read method that reads from the searchHistory.json file
@@ -37,9 +37,7 @@ class HistoryService {
       return parsedCities;
     })
   }
-
-
-  // TODO Define an addCity method that adds a city to the searchHistory.json file
+  // Define an addCity method that adds a city to the searchHistory.json file
   async addCity(city: string) {
     if (!city) {
       throw new Error('State cannot be blank.');
@@ -57,11 +55,12 @@ class HistoryService {
       .then((updatedCities) => this.write(updatedCities))
       .then(() => newCity);
   }
-  // * BONUS TODO: Define a removeCity method that removes a city from the searchHistory.json file
+  // Define a removeCity method that removes a city from the searchHistory.json file
   async removeCity(id: string) {
     return await this.getCities()
       .then((cities) => cities.filter((city) => city.id !== id))
       .then((filteredCities) => this.write(filteredCities));
   }
 }
+
 export default new HistoryService();
